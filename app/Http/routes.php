@@ -28,4 +28,8 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
+    Route::group('/group', function () {
+        Route::get('/', 'GroupController@index');
+    });
+
 });
