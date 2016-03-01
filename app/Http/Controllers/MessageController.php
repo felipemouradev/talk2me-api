@@ -5,24 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
-
-class UserController extends Controller
+use App\Message;
+class MessageController extends Controller
 {
     //
+    //
     public function index(){
-        $data = User::all();
-
+        $data = Message::with('user')->paginate(8);
         return response()->json(['response'=>$data]);
     }
-
-    public function create(Request $request){
+    public function store(Request $request){
         $data = $request->all();
+        //dd($data);
         if (!empty($data)) {
-            $save = User::create($data);
-            if(isset($data['password'])) {
-                $data['password'] = md5($data['password']);
-            }
+            $save = Message::create($data);
             if ($save) {
                 return response()->json(['response'=>$data],200);
             }

@@ -28,8 +28,14 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
-    Route::group('/group', function () {
-        Route::get('/', 'GroupController@index');
+
+    Route::resource('group','GroupController');
+    Route::resource('message','MessageController');
+
+    Route::group(['prefix'=>'/user'], function () {
+        Route::get('/', 'UserController@index');
+        Route::post('/create', 'UserController@create');
+
     });
 
 });
