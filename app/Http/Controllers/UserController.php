@@ -13,10 +13,11 @@ class UserController extends Controller
     public function index(){
         $data = User::all();
 
+        if(empty($data)) return response()->json(['response'=>'Sem usuarios cadastrados'],404);
         return response()->json(['response'=>$data]);
     }
 
-    public function create(Request $request){
+    public function store(Request $request){
         $data = $request->all();
         if (!empty($data)) {
             $save = User::create($data);

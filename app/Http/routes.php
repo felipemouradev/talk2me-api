@@ -28,14 +28,9 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
+    Route::resource('/messages','MessageController');
+    Route::resource('/groups','GroupController');
 
-    Route::resource('group','GroupController');
-    Route::resource('message','MessageController');
-
-    Route::group(['prefix'=>'/user'], function () {
-        Route::get('/', 'UserController@index');
-        Route::post('/create', 'UserController@create');
-
-    });
+    Route::resource('/users','UserController');
 
 });
