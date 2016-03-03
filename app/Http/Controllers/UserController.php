@@ -25,7 +25,7 @@ class UserController extends Controller
                 $data['password'] = md5($data['password']);
             }
             if ($save) {
-                return response()->json(['response'=>$data],200);
+                return response()->json(['response'=>"Salvo com sucesso"],200);
             }
         }
         return response()->json(['response'=>false],403);

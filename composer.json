@@ -21,7 +21,12 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/Http/Helpers/HashHelper.php"
+        ]
+
+
     },
     "autoload-dev": {
         "classmap": [

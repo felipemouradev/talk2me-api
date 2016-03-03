@@ -25,8 +25,9 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+Route::post('/request-token','AuthController@requestToken');
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web','authz']], function () {
     //
     Route::resource('/messages','MessageController');
     Route::resource('/groups','GroupController');

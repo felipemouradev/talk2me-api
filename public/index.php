@@ -18,6 +18,9 @@
 | loading any of our classes later on. It feels nice to relax.
 |
 */
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 require __DIR__.'/../bootstrap/autoload.php';
 
@@ -32,6 +35,8 @@ require __DIR__.'/../bootstrap/autoload.php';
 | the responses back to the browser and delight our users.
 |
 */
+
+
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 

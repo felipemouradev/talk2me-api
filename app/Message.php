@@ -18,7 +18,7 @@ class Message extends Model
         $group_slug = Group::getGroupBySlug($slug);
 
         if ($group_slug != null) {
-            $data = self::where('group_id',$group_slug['id'])->orderBy('id','DESC')->with('user')->paginate(2);
+            $data = self::where('group_id',$group_slug['id'])->orderBy('id','DESC')->with('user')->paginate(20);
             return $data;
         }
 
