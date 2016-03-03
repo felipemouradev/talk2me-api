@@ -20,10 +20,13 @@ class UserController extends Controller
     public function store(Request $request){
         $data = $request->all();
         if (!empty($data)) {
-            $save = User::create($data);
+
             if(isset($data['password'])) {
                 $data['password'] = md5($data['password']);
             }
+
+            $save = User::create($data);
+
             if ($save) {
                 return response()->json(['response'=>"Salvo com sucesso"],200);
             }
