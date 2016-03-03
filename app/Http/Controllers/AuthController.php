@@ -13,7 +13,7 @@ class AuthController extends Controller
         $data = $request->all();
         if (!empty($data['login']) && !empty($data['password'])){
 
-            $find = User::where('login',$data['login'])->where('password',$data['password'])->first();
+            $find = User::where('login',$data['login'])->where('password',md5($data['password']))->first();
 
             if (empty($find)) return response()->json(['user'=>false],401);
 

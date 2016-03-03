@@ -27,6 +27,8 @@ Route::get('/', function () {
 */
 Route::post('/request-token','AuthController@requestToken');
 
+Route::post('/singup','UserController@store');
+
 Route::group(['middleware' => ['web','authz']], function () {
     //
     Route::resource('/messages','MessageController');
