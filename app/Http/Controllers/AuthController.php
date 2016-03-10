@@ -20,9 +20,29 @@ class AuthController extends Controller
             $hash['token'] = hashEncrypt($find->toArray());
             //dd($find);
             $return = array_merge($find->toArray(),$hash);
+
+            dd($return);
+
             return response()->json(['user'=>$return],200);
         }
 
         return response()->json(['user'=>false],401);
     }
+
+    public function getNewToken(){
+        $hash = (!empty($_SERVER['HTTP_AUTHORIZATION'])) ? $_SERVER['HTTP_AUTHORIZATION'] : null;
+        if (!is_null($hash)) {
+
+            $decryp = hashDecrypt($hash);
+            if (count($descryp)!=4) return response()->json(['user'=>"Tentativa invalida! "],401);
+            $descryp['time'] = time()+60*60;
+            $hash = hashDecrypt($descryp);
+
+            $descryp['token'] = $hash;
+            
+
+            return response()->json(['user'=>$descryp],200);
+        }
+    }
+
 }

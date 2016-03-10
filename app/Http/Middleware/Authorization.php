@@ -18,7 +18,8 @@ class Authorization
         $authorization = (!empty($_SERVER['HTTP_AUTHORIZATION'])) ? $_SERVER['HTTP_AUTHORIZATION'] : null;
         if($authorization !=  null){
             $data = hashDecrypt($authorization);
-            if( $data && count($data)==3 ){
+            
+            if( $data && count($data)==4 ){
                 if (time() > $data['time']){
                     return response()->json(['reponse'=>'Token Expirado'],403);
                 }

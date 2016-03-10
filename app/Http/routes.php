@@ -36,4 +36,6 @@ Route::group(['middleware' => ['web','authz']], function () {
 
     Route::resource('/users','UserController');
 
+    Route::post('/get-new-token','AuthController@getNewToken');
+
 });
