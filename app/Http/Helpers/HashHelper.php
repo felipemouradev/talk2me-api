@@ -12,9 +12,11 @@
     }
 
     function hashDecrypt($hash) {
+
         $st1 = base64_decode($hash);
+
         $exp = explode("@",$st1);
-        
+
         if (count($exp)==4){
             $time = base64_decode($exp[0]);
             $id = base64_decode($exp[1]);
@@ -25,7 +27,7 @@
             $data['id'] = $id;
             $data['login'] = $login;
             $data['created_at'] = $created_at;
-
+            
             return $data;
         }
         return false;
